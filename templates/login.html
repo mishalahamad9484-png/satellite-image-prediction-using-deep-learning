@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Orbital AI Login</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(
+    135deg,
+    #000000 0%,
+    #020617 30%,
+    #050816 65%,
+    #000000 100%);
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* GLOW */
+
+.glow{
+
+    position:absolute;
+
+    width:850px;
+
+    height:850px;
+
+    background:
+    radial-gradient(circle,
+    rgba(0,217,255,0.10),
+    transparent 72%);
+
+    top:-180px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    filter:blur(90px);
+
+}
+
+/* MAIN CONTAINER */
+
+.container{
+
+    width:100%;
+
+    max-width:1300px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:60px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* LEFT SIDE */
+
+.left-section{
+
+    width:50%;
+
+}
+
+.logo{
+
+    font-size:72px;
+
+    font-weight:800;
+
+    color:white;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+}
+
+.logo span{
+
+    color:#00d9ff;
+
+    text-shadow:
+    0 0 20px rgba(0,217,255,0.5);
+
+}
+
+.subtitle{
+
+    color:#94a3b8;
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    max-width:600px;
+
+}
+
+/* LOGIN CARD */
+
+.login-card{
+
+    width:430px;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(22px);
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,0.45);
+
+}
+
+/* TITLE */
+
+.login-title{
+
+    color:white;
+
+    font-size:38px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+
+}
+
+.login-subtitle{
+
+    color:#94a3b8;
+
+    margin-bottom:35px;
+
+    line-height:1.6;
+
+}
+
+/* INPUT */
+
+.input-box{
+
+    width:100%;
+
+    height:58px;
+
+    background:
+    rgba(255,255,255,0.06);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+    padding:0 20px;
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+.input-box::placeholder{
+
+    color:#94a3b8;
+
+}
+
+/* BUTTON */
+
+.login-btn{
+
+    width:100%;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(to right,#2563eb,#06b6d4);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    margin-top:10px;
+
+    box-shadow:
+    0 12px 30px rgba(37,99,235,0.25);
+
+}
+
+.login-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* REGISTER LINK */
+
+.register-text{
+
+    margin-top:25px;
+
+    color:#94a3b8;
+
+    text-align:center;
+
+}
+
+.register-text a{
+
+    color:#00d9ff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .container{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:60px;
+
+    }
+
+    .left-section{
+
+        width:100%;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<div class="container">
+
+<!-- LEFT -->
+
+<div class="left-section">
+
+<h1 class="logo">
+
+ORBITAL <span>AI</span>
+
+</h1>
+
+<p class="subtitle">
+
+Secure satellite intelligence access system
+powered by advanced neural terrain analysis
+and deep learning prediction technologies.
+
+</p>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="login-card">
+
+<h2 class="login-title">
+
+Mission Login
+
+</h2>
+
+<p class="login-subtitle">
+
+Access the AI satellite intelligence dashboard.
+
+</p>
+
+<form action="/login"
+method="POST">
+
+<input type="text"
+name="username"
+class="input-box"
+placeholder="Enter Username"
+required>
+
+<input type="password"
+name="password"
+class="input-box"
+placeholder="Enter Password"
+required>
+
+<button type="submit"
+class="login-btn">
+
+LOGIN
+
+</button>
+
+</form>
+
+<div class="register-text">
+
+New User?
+
+<a href="/register">
+
+Create Account
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

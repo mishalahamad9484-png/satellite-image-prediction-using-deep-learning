@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Orbital AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+  background:
+linear-gradient(
+135deg,
+#000000 0%,
+#020617 30%,
+#050816 65%,
+#000000 100%);
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    color:white;
+
+}
+
+/* BACKGROUND GLOW */
+.glow{
+
+    position:absolute;
+
+    width:850px;
+
+    height:850px;
+
+    background:
+    radial-gradient(circle,
+    rgba(0,217,255,0.10),
+    transparent 72%);
+
+    top:-180px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    filter:blur(90px);
+
+}
+
+/* STARS */
+
+body::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    background-image:
+    radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px);
+
+    background-size:45px 45px;
+
+    opacity:0.35;
+
+}
+
+/* NAVBAR */
+
+.navbar{
+
+    width:100%;
+
+    padding:28px 90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.logo span{
+
+    color:#00d9ff;
+
+}
+
+.nav-btn{
+
+    width:150px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:
+    linear-gradient(to right,#2563eb,#06b6d4);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+.nav-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 30px rgba(37,99,235,0.35);
+
+}
+
+/* HERO SECTION */
+
+.hero{
+
+    width:100%;
+
+    height:85vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:0 90px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.hero-left{
+
+    width:55%;
+
+}
+
+.hero-tag{
+
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#00d9ff;
+
+    font-size:14px;
+
+    margin-bottom:30px;
+
+}
+
+.hero-title{
+
+    font-size:68px;
+
+    font-weight:800;
+
+    line-height:1.1;
+
+    margin-bottom:30px;
+
+}
+
+.hero-title span{
+
+    color:#00d9ff;
+
+    text-shadow:
+    0 0 25px rgba(0,217,255,0.35);
+
+}
+
+.hero-subtitle{
+
+    font-size:20px;
+
+    color:#94a3b8;
+
+    line-height:1.9;
+
+    width:90%;
+
+    margin-bottom:45px;
+
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.primary-btn{
+
+    width:220px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(to right,#2563eb,#06b6d4);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    box-shadow:
+    0 12px 30px rgba(37,99,235,0.25);
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.secondary-btn{
+
+    width:220px;
+
+    height:60px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    background:rgba(255,255,255,0.03);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+/* RIGHT PANEL */
+
+.hero-right{
+
+    width:45%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* GLASS CARD */
+
+.ai-card{
+
+    width:430px;
+
+    padding:45px;
+
+    border-radius:32px;
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(22px);
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,0.45);
+
+}
+
+.card-title{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+.card-sub{
+
+    color:#94a3b8;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+/* STATS */
+
+.stat{
+
+    margin-bottom:22px;
+
+}
+
+.stat-title{
+
+    font-size:14px;
+
+    color:#94a3b8;
+
+    margin-bottom:8px;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:12px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.08);
+
+    overflow:hidden;
+
+}
+
+.progress-bar{
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(to right,#2563eb,#06b6d4);
+
+}
+
+.bar1{
+    width:92%;
+}
+
+.bar2{
+    width:86%;
+}
+
+.bar3{
+    width:96%;
+}
+.ai-card{
+
+    animation:floatCard 5s ease-in-out infinite;
+
+}
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+
+        ORBITAL <span>AI</span>
+
+    </div>
+
+    <form action="/loginpage">
+
+        <button class="nav-btn">
+
+            LOGIN
+
+        </button>
+
+    </form>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <!-- LEFT -->
+
+    <div class="hero-left">
+
+        <div class="hero-tag">
+
+            AI Satellite Intelligence Platform
+
+        </div>
+
+        <h1 class="hero-title">
+
+            Next Generation
+
+            <span>
+
+                Satellite Analysis
+
+            </span>
+
+            System
+
+        </h1>
+
+        <p class="hero-subtitle">
+
+            Advanced AI-powered terrain classification and satellite imagery
+            prediction system built using deep learning neural architectures
+            for intelligent geospatial analysis.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <form action="/loginpage">
+
+                <button class="primary-btn">
+
+                    GET STARTED
+
+                </button>
+
+            </form>
+
+            <button class="secondary-btn">
+
+                Live AI Monitoring
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="hero-right">
+
+        <div class="ai-card">
+
+            <h2 class="card-title">
+
+                Neural AI Analysis
+
+            </h2>
+
+            <p class="card-sub">
+
+                Real-time terrain recognition and intelligent
+                satellite imagery classification dashboard.
+
+            </p>
+
+            <div class="stat">
+
+                <div class="stat-title">
+
+                    Terrain Classification Accuracy
+
+                </div>
+
+                <div class="progress">
+
+                    <div class="progress-bar bar1"></div>
+
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-title">
+
+                    Deep Learning Prediction
+
+                </div>
+
+                <div class="progress">
+
+                    <div class="progress-bar bar2"></div>
+
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-title">
+
+                    AI Detection Precision
+
+                </div>
+
+                <div class="progress">
+
+                    <div class="progress-bar bar3"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

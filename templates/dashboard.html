@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8"/>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+
+<title>Orbital AI Dashboard</title>
+
+<!-- GOOGLE FONT -->
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
+rel="stylesheet"/>
+
+<!-- FONT AWESOME -->
+
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+rel="stylesheet">
+
+<!-- NUCLEO -->
+
+<link href="{{ url_for('static', filename='assets/css/nucleo-icons.css') }}"
+rel="stylesheet"/>
+
+<!-- BLACK DASHBOARD -->
+
+<link href="{{ url_for('static', filename='assets/css/black-dashboard.css') }}"
+rel="stylesheet"/>
+
+<style>
+
+body{
+
+    background:
+    linear-gradient(
+    135deg,
+    #000000 0%,
+    #020617 30%,
+    #050816 65%,
+    #000000 100%);
+
+    overflow-x:hidden;
+
+    color:white;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* GLOW */
+
+.glow{
+
+    position:fixed;
+
+    width:850px;
+
+    height:850px;
+
+    background:
+    radial-gradient(circle,
+    rgba(0,217,255,0.10),
+    transparent 72%);
+
+    top:-180px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    filter:blur(90px);
+
+    z-index:0;
+
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+    background:
+    rgba(255,255,255,0.04) !important;
+
+    backdrop-filter:blur(22px);
+
+    border-right:
+    1px solid rgba(255,255,255,0.08);
+
+}
+
+/* MAIN CARD */
+
+.main-card{
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(22px);
+
+    border-radius:30px;
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,0.45);
+
+    padding:40px;
+
+}
+
+/* TITLE */
+
+.dashboard-title{
+
+    font-size:56px;
+
+    font-weight:800;
+
+    color:white;
+
+    margin-bottom:15px;
+
+}
+
+/* SUBTITLE */
+
+.dashboard-subtitle{
+
+    font-size:19px;
+
+    color:#94a3b8;
+
+    margin-bottom:40px;
+
+    line-height:1.8;
+
+}
+
+/* UPLOAD CARD */
+
+.upload-card{
+
+    width:550px;
+
+    margin:40px auto;
+
+    padding:50px;
+
+    background:
+    rgba(255,255,255,0.03);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+
+    text-align:center;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.35);
+
+}
+
+/* BUTTON */
+
+.upload-btn{
+
+    display:inline-block;
+
+    padding:16px 40px;
+
+    background:
+    linear-gradient(to right,#2563eb,#06b6d4);
+
+    color:white;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    font-size:18px;
+
+    border:none;
+
+    box-shadow:
+    0 12px 30px rgba(37,99,235,0.25);
+
+}
+
+/* FILE NAME */
+
+#fileName{
+
+    margin-top:22px;
+
+    color:#94a3b8;
+
+    font-size:16px;
+
+}
+
+/* PREVIEW */
+
+#preview{
+
+    width:420px;
+
+    margin-top:25px;
+
+    border-radius:20px;
+
+    display:none;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,0.12);
+
+}
+
+/* SCAN BUTTON */
+
+.scan-btn{
+
+    width:260px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(to right,#2563eb,#06b6d4);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 12px 30px rgba(37,99,235,0.25);
+
+}
+
+/* SIDEBAR TEXT */
+
+.nav-link p{
+
+    color:white !important;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<div class="wrapper">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="sidebar-wrapper">
+
+<div class="logo">
+
+<a href="#"
+class="simple-text logo-mini">
+
+AI
+
+</a>
+
+<a href="#"
+class="simple-text logo-normal">
+
+ORBITAL AI
+
+</a>
+
+</div>
+
+<ul class="nav">
+
+<li class="active">
+
+<a href="/dashboard">
+
+<i class="tim-icons icon-chart-pie-36"></i>
+
+<p>Dashboard</p>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#upload-section">
+
+<i class="tim-icons icon-upload"></i>
+
+<p>Upload Image</p>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="/logout">
+
+<i class="tim-icons icon-button-power"></i>
+
+<p>Logout</p>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- MAIN PANEL -->
+
+<div class="main-panel">
+
+<div class="content">
+
+<div class="row">
+
+<div class="col-12">
+
+<div class="main-card">
+
+<h1 class="dashboard-title">
+
+Satellite Intelligence Dashboard
+
+</h1>
+
+<p class="dashboard-subtitle">
+
+AI-powered terrain classification and
+satellite imagery prediction platform.
+
+</p>
+
+<!-- FORM -->
+
+<form action="/predict"
+method="POST"
+enctype="multipart/form-data">
+
+<div class="upload-card">
+
+<label for="fileInput"
+class="upload-btn">
+
+Choose Satellite Image
+
+</label>
+
+<input type="file"
+name="file"
+id="fileInput"
+accept="image/*"
+required
+style="display:none;">
+
+<p id="fileName">
+
+No file selected
+
+</p>
+
+<img id="preview"
+src="">
+
+<br><br>
+
+<button type="submit"
+class="scan-btn">
+
+INITIATE AI SCAN
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- JS -->
+
+<script>
+
+const fileInput = document.getElementById("fileInput");
+
+const preview = document.getElementById("preview");
+
+const fileName = document.getElementById("fileName");
+
+fileInput.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(file){
+
+        fileName.innerText = file.name;
+
+        const reader = new FileReader();
+
+        preview.style.display = "block";
+
+        reader.addEventListener("load", function(){
+
+            preview.setAttribute("src", this.result);
+
+        });
+
+        reader.readAsDataURL(file);
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AI Scan Results</title>
+
+<!-- GOOGLE FONT -->
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
+rel="stylesheet">
+
+<!-- BLACK DASHBOARD -->
+
+<link href="{{ url_for('static', filename='assets/css/black-dashboard.css') }}"
+rel="stylesheet"/>
+
+<!-- NUCLEO -->
+
+<link href="{{ url_for('static', filename='assets/css/nucleo-icons.css') }}"
+rel="stylesheet"/>
+
+<style>
+
+body{
+
+    background:
+    linear-gradient(
+    135deg,
+    #000000 0%,
+    #020617 30%,
+    #050816 65%,
+    #000000 100%);
+
+    overflow-x:hidden;
+
+    color:white;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* GLOW */
+
+.glow{
+
+    position:fixed;
+
+    width:850px;
+
+    height:850px;
+
+    background:
+    radial-gradient(circle,
+    rgba(0,217,255,0.10),
+    transparent 72%);
+
+    top:-180px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    filter:blur(90px);
+
+    z-index:0;
+
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+    background:
+    rgba(255,255,255,0.04) !important;
+
+    backdrop-filter:blur(22px);
+
+    border-right:
+    1px solid rgba(255,255,255,0.08);
+
+}
+
+/* RESULT CARD */
+
+.result-card{
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(22px);
+
+    border-radius:30px;
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,0.45);
+
+    padding:50px;
+
+    text-align:center;
+
+}
+
+/* TITLE */
+
+.result-title{
+
+    font-size:54px;
+
+    font-weight:800;
+
+    margin-bottom:15px;
+
+    color:white;
+
+}
+
+/* SUBTITLE */
+
+.result-sub{
+
+    color:#94a3b8;
+
+    font-size:18px;
+
+    margin-bottom:40px;
+
+}
+
+/* IMAGE */
+
+.result-image{
+
+    width:420px;
+
+    border-radius:25px;
+
+    margin-bottom:35px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.35);
+
+}
+
+/* PREDICTION */
+
+.prediction{
+
+    font-size:48px;
+
+    font-weight:800;
+
+    color:#00d9ff;
+
+    margin-bottom:20px;
+
+}
+
+/* CONFIDENCE */
+
+.confidence{
+
+    font-size:24px;
+
+    color:white;
+
+    margin-bottom:40px;
+
+}
+
+.confidence span{
+
+    color:#00d9ff;
+
+    font-weight:700;
+
+}
+
+/* BUTTONS */
+
+.action-btn{
+
+    width:240px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(to right,#2563eb,#06b6d4);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    margin:10px;
+
+    box-shadow:
+    0 12px 30px rgba(37,99,235,0.25);
+
+}
+
+/* SIDEBAR TEXT */
+
+.nav-link p{
+
+    color:white !important;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<div class="wrapper">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="sidebar-wrapper">
+
+<div class="logo">
+
+<a href="#"
+class="simple-text logo-mini">
+
+AI
+
+</a>
+
+<a href="#"
+class="simple-text logo-normal">
+
+ORBITAL AI
+
+</a>
+
+</div>
+
+<ul class="nav">
+
+<li>
+
+<a href="/dashboard">
+
+<i class="tim-icons icon-chart-pie-36"></i>
+
+<p>Dashboard</p>
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="#">
+
+<i class="tim-icons icon-zoom-split"></i>
+
+<p>Results</p>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="/logout">
+
+<i class="tim-icons icon-button-power"></i>
+
+<p>Logout</p>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- MAIN PANEL -->
+
+<div class="main-panel">
+
+<div class="content">
+
+<div class="row">
+
+<div class="col-12">
+
+<div class="result-card">
+
+<h1 class="result-title">
+
+AI ANALYSIS COMPLETE
+
+</h1>
+
+<p class="result-sub">
+
+Neural terrain classification completed successfully.
+
+</p>
+
+<!-- IMAGE -->
+
+<img src="{{ image_path }}"
+class="result-image">
+
+<!-- PREDICTION -->
+
+<h2 class="prediction">
+
+{{ prediction }}
+
+</h2>
+
+<!-- CONFIDENCE -->
+
+<div class="confidence">
+
+Confidence Level:
+<span>
+
+{{ confidence }}%
+
+</span>
+
+</div>
+
+<!-- BUTTONS -->
+
+<a href="/dashboard">
+
+<button class="action-btn">
+
+Scan Another Image
+
+</button>
+
+</a>
+
+<a href="/logout">
+
+<button class="action-btn">
+
+Logout
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
